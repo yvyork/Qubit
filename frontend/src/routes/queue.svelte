@@ -10,7 +10,7 @@
 	let server = "165.22.94.223";
 
 
-	let url = `http://165.22.94.223:8000/queue/ticket/?called=False`;
+	let url = `http://10.65.15.141:8000/queue/ticket/?called=False`;
 
 	const [data,loading,error,get] =fetchStore(url)
 
@@ -19,7 +19,7 @@
 		$currentTicket = e.detail;
 		$waitinglist = $waitinglist.filter(t => t != $currentTicket)
 
-		const url = `http://165.22.94.223:8000/queue/ticket/${$currentTicket.id}`;
+		const url = `http://10.65.15.141:8000/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
 		const res = await fetch(url, {
 			method: 'PUT',

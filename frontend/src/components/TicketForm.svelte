@@ -7,7 +7,7 @@
     let local = "127.0.0.1";
 	let server = "165.22.94.223";
 
-    let url = 'http://165.22.94.223:8000/queue/ticket/'
+    let url = 'http://10.65.15.141:8000/queue/ticket/'
 
     async function handleSubmit() {
 
