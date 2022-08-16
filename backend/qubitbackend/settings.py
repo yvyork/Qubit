@@ -63,7 +63,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://165.22.94.223:80",
     "http://10.65.15.141:3000",
     "http://10.65.15.141:80",
-
 ]
 
 TEMPLATES = [
