@@ -6,7 +6,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ticketdata:./ticketpdf
+      - ./myticket:/ticketpdf
     depends_on:
       db:
         condition: service_healthy 
@@ -34,5 +34,5 @@ services:
       timeout: 5s
       retries: 5
 
-volume:
-  ticketdata:
+volumes:
+  myticket:
