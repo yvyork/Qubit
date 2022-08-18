@@ -6,8 +6,8 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - type: volume
-        source: mydata
+      - type: bind
+        source: ./mydata
         target: /django/media
     depends_on:
       db:
