@@ -9,11 +9,8 @@ class PDF(FPDF):
         pdf = PDF('P', 'mm', (62,29))
         pdf.add_page()
         pdf.set_font('Arial', 'B', 40)
-        pdf.cell(w=20, h=1, txt='# %d' % number, border=0, ln=1, align='C')
-        pdf.output('./printdata/ticket.pdf', 'F')
+        pdf.set_left_margin(20)
+        pdf.cell(w=20, h=10, txt='# %d' % number, border=0, ln=0, align='C')
+        pdf.output('./ticketpdf/ticket.pdf', 'F')
         #os.popen("lpr -P Qubit -o page-ranges=2 -o media=Custom.62x29mm backend/ticketing/ticket.pdf")
-        # path to ticketing folder
-        # os.popen("lpr -P Qubit -o page-ranges=2 -o media=Custom.62x29mm backend/ticketing/ticket.pdf")
-        # os.system("sleep 1")
 
-        # os.remove('ticket.pdf')

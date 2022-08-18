@@ -1,7 +1,7 @@
 FROM python:3.8
 ENV PYTHONUNBUFFERED=1
 WORKDIR /django
-RUN mkdir media
+RUN mkdir ticketpdf
 COPY . .
 RUN mkdir -p /django/media
 RUN pip3 install -r requirements.txt

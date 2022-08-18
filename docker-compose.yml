@@ -8,7 +8,7 @@ services:
     volumes:
       - type: bind
         source: ./printdata
-        target: /django/media
+        target: /django/ticketpdf
     depends_on:
       db:
         condition: service_healthy 
