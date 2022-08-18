@@ -6,7 +6,9 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - myticket:/media
+      - type: volume
+        source: mydata
+        target: /django/media
     depends_on:
       db:
         condition: service_healthy 
@@ -35,4 +37,4 @@ services:
       retries: 5
 
 volumes:
-  myticket:
+  mydata:
