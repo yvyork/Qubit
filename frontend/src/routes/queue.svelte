@@ -24,8 +24,16 @@
 			return (list || []).filter(t => t.id !== $currentTicket.id)
 		});
 		const url = `http://${server}/queue/ticket/${$currentTicket.id}`;
+
 		$currentTicket.called = true;
-		$currentTicket.counter = $counter === 'Schalter A' ? 1 : 2
+		
+		if ($counter === 'Schalter 1') {
+			$currentTicket.counter = 1;
+		} else if ($counter === 'Schalter 2') {
+			$currentTicket.counter = 2;
+		} else {
+			$currentTicket.counter = 3;
+		}
 		const res = await fetch(url, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json'},
