@@ -2,24 +2,27 @@
 <script>
     import TicketList from '.././components/TicketList.svelte';  
 	import ServingTicket from '../components/ServingTicket.svelte';
-	import {waitinglist, currentTicket} from '../stores/ticketstore'
-	//import {currentTickets, waitinglist} from '../stores/ticketstore'
+	import {currentTicket} from '../stores/ticketstore';
 	import fetchStore from '../stores/ticketstore'
 
 	let local = "127.0.0.1";
-	let server = "165.22.94.223";
+	let server = "10.65.15.141";
 
 
-	let url = `http://10.65.15.141:8000/queue/ticket/?called=False`;
+	let url = `http://127.0.0.1:8000/queue/ticket/?called=False`;
 
 	const [data,loading,error,get] =fetchStore(url)
+	setInterval(() => {
+		get()
+	}, 1000);
 
 
 	const ticketAufruf = async (e) => {
 		$currentTicket = e.detail;
-		$waitinglist = $waitinglist.filter(t => t != $currentTicket)
-
-		const url = `http://10.65.15.141:8000/queue/ticket/${$currentTicket.id}`;
+		data.update((list) => {
+			return (list || []).filter(t => t.id !== $currentTicket.id)
+		});
+		const url = `http://127.0.0.1:8000/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
 		const res = await fetch(url, {
 			method: 'PUT',
@@ -50,7 +53,7 @@
 	<p>Error: {$error.message}</p>
 {:else}
 <div class="max-w-lg mx-auto"> 
-	<TicketList on:aufrufen={ticketAufruf}/>
+	<TicketList list={data} on:aufrufen={ticketAufruf}/>
 </div>
 {/if}
 
