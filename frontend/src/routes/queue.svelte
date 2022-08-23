@@ -9,7 +9,7 @@
 	let server = "10.65.15.141";
 
 
-	let url = `http://127.0.0.1:8000/queue/ticket/?called=False`;
+	let url = `http://10.65.15.141:8000/queue/ticket/?called=False`;
 
 	const [data,loading,error,get] =fetchStore(url)
 	setInterval(() => {
@@ -22,7 +22,7 @@
 		data.update((list) => {
 			return (list || []).filter(t => t.id !== $currentTicket.id)
 		});
-		const url = `http://127.0.0.1:8000/queue/ticket/${$currentTicket.id}`;
+		const url = `http://10.65.15.141:8000/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
 		const res = await fetch(url, {
 			method: 'PUT',
