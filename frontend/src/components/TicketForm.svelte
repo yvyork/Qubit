@@ -4,8 +4,6 @@
 
     export let ticketType;
 
-    let local = "127.0.0.1";
-
     let url = 'http://127.0.0.1:8000/queue/ticket/'
 
     async function handleSubmit() {
@@ -36,7 +34,3 @@
     </button>
 </div>
 </Card>
-
-<style>
-
-</style>

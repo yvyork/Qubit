@@ -37,7 +37,6 @@
 </script>
 
 <svelte:head>
-	<!-- Vielleicht Schalter anstatt Warteliste -->
 	<title>Warteliste</title> 
 </svelte:head>
 
@@ -47,9 +46,8 @@
 <h1 id="warteliste" class="text-4xl text-center my-8 uppercase"><strong>Warteliste</strong></h1>
 
 
-{#if $loading}
-	<p>Loading...</p>
-{:else if $error}
+
+{#if $error}
 	<p>Error: {$error.message}</p>
 {:else}
 <div class="max-w-lg mx-auto"> 

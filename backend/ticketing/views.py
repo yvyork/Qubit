@@ -37,5 +37,5 @@ def ticket_detail(request, id):
         serialzer = TicketSerializer(ticket, data=request.data)
         serialzer.is_valid(raise_exception=True)
         serialzer.save()
-        #callPaul(ticket.number, ticket.counter)
+        callPaul(ticket.number, ticket.counter)
         return Response(serialzer.data)
