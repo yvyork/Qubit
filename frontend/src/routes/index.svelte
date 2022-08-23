@@ -30,6 +30,11 @@
 				<a href="/queue" class="counter" id="counterB" on:click={setCounterB}>Schalter B</a>
 			</Card>
 		</div>
+		<div>
+			<Card class="card-item">
+				<a href="/register" class="counter">Registrierung</a>
+			</Card>
+		</div>
 		
 	</div>
 </div>

@@ -1,12 +1,14 @@
 <script>
     import Card from './Card.svelte'
     import {createEventDispatcher} from 'svelte'
+    import { counter } from '../stores/counterstore';
     export let item
     export let showButton = true;
 
     const dispatch = createEventDispatcher()
     
     const handleCall = (item) => {
+        console.log($counter);
         dispatch('aufrufen', item);      
     }
 

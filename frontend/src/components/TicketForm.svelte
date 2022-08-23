@@ -4,7 +4,7 @@
 
     export let ticketType;
 
-    let url = 'http://10.65.15.141:8000/queue/ticket/'
+    let url = 'http://127.0.0.1:8000/queue/ticket/'
 
     async function handleSubmit() {
 
@@ -13,14 +13,9 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 wait: ticketType.wait_time,
-                counter: counterId(),
             })
         });
         const data = await submit.json();
-    }
-
-    function counterId() {
-        return $counter === 'Schalter A' ? 1 : 2;
     }
     
 </script>

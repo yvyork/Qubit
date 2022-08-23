@@ -5,7 +5,8 @@
     import { fade } from 'svelte/transition';
 </script>
 
-<h1 id="serving" class="text-4xl text-center my-7 uppercase"><strong>{$counter}</strong></h1>
+<h1 id="serving" class="text-4xl text-center my-7 uppercase"><strong>
+    {#if $counter == undefined} Bitte Schalter auswählen {:else}  {$counter} {/if}</strong></h1>
 
 
 <div class="py-4 grid gap-4 grid-cols-1 w-auto">

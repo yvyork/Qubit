@@ -4,12 +4,13 @@
 	import ServingTicket from '../components/ServingTicket.svelte';
 	import {currentTicket} from '../stores/ticketstore';
 	import fetchStore from '../stores/ticketstore'
+	import { counter } from '../stores/counterstore'
 
 	let local = "127.0.0.1";
 	let server = "10.65.15.141";
 
 
-	let url = `http://10.65.15.141:8000/queue/ticket/?called=False`;
+	let url = `http://127.0.0.1:8000/queue/ticket/?called=False`;
 
 	const [data,loading,error,get] =fetchStore(url)
 	setInterval(() => {
@@ -22,18 +23,15 @@
 		data.update((list) => {
 			return (list || []).filter(t => t.id !== $currentTicket.id)
 		});
-		const url = `http://10.65.15.141:8000/queue/ticket/${$currentTicket.id}`;
+		const url = `http://127.0.0.1:8000/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
+		$currentTicket.counter = $counter === 'Schalter A' ? 1 : 2
 		const res = await fetch(url, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json'},
 			body: JSON.stringify($currentTicket),  
 		});
-
-
 	}
-
-
 </script>
 
 <svelte:head>
