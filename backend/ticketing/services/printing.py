@@ -1,7 +1,7 @@
 from fpdf import FPDF
+from pdf2image import convert_from_path
 import os
 
-# cups library for python!!!
 
 class PDF(FPDF):
 
@@ -12,5 +12,12 @@ class PDF(FPDF):
         pdf.set_left_margin(20)
         pdf.cell(w=20, h=10, txt='# %d' % number, border=0, ln=0, align='C')
         pdf.output('./ticketpdf/ticket.pdf', 'F')
-        #os.popen("lpr -P Qubit -o page-ranges=2 -o media=Custom.62x29mm backend/ticketing/ticket.pdf")
+
+        images = convert_from_path('./ticketpdf/ticket.pdf', 62)
+
+        for image in images:
+            image.save('out.png', 'PNG')
+
+        os.popen ("brother_ql print -l 62 ./ticketpdf/ticket.pdf")
+
 

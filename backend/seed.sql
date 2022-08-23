@@ -2,7 +2,8 @@
 
 INSERT INTO ticketing_counter (id, counter_name)
 VALUES (1, 'Schalter A'),
-(2, 'Schalter B');
+(2, 'Schalter B')
+(3, 'Schalter C');
 
 // The Zero-Ticket is always needed to start the counter
 // Fix in later version
