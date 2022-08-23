@@ -18,6 +18,6 @@ class PDF(FPDF):
         for image in images:
             image.save('out.png', 'PNG')
 
-        os.popen ("brother_ql print -l 62 ./ticketpdf/ticket.png")
+        os.popen ("brother_ql print -l 62 ./ticketpdf/out.png")
 
 
