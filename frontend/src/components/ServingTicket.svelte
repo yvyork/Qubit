@@ -2,7 +2,6 @@
     import TicketItem from "./TicketItem.svelte";
     import {currentTicket} from "../stores/ticketstore"
     import {counter} from "../stores/counterstore"
-    import { fade } from 'svelte/transition';
 </script>
 
 <h1 id="serving" class="text-4xl text-center my-7 uppercase"><strong>

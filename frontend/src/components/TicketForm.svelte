@@ -4,7 +4,9 @@
 
     export let ticketType;
 
-    let url = 'http://127.0.0.1:8000/queue/ticket/'
+    let server = "10.65.15.141";
+
+    let url = `http://${server}:8000/queue/ticket/`
 
     async function handleSubmit() {
 

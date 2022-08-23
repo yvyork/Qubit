@@ -2,17 +2,23 @@
 	import { counter } from "../stores/counterstore";
 	import Card from "../components/Card.svelte";
 
-	function setCounterA() {
-		var counterName = document.getElementById("counterA").innerText;
+	function setCounter1() {
+		var counterName = document.getElementById("counter1").innerText;
 		setLocalCounter(counterName);
 	}
 
-	function setCounterB() {
-		var counterName = document.getElementById("counterB").innerText;
+	function setCounter2() {
+		var counterName = document.getElementById("counter2").innerText;
+		setLocalCounter(counterName);
+	}
+
+	function setCounter3() {
+		var counterName = document.getElementById("counter3").innerText;
 		setLocalCounter(counterName);
 	}
 
 	function setLocalCounter(counterId) {
+		localStorage.clear();
 		$counter = counterId;
 	}
 </script>
@@ -22,12 +28,17 @@
 	<div class="flex flex-col mx-auto">
 		<div class="card-item">
 			<Card>
-				<a href="/queue" class="counter" id="counterA" on:click={setCounterA}>Schalter A</a>
+				<a href="/queue" class="counter" id="counter1" on:click={setCounter1}>Schalter 1</a>
 			</Card>
 		</div>
 		<div>
 			<Card class="card-item">
-				<a href="/queue" class="counter" id="counterB" on:click={setCounterB}>Schalter B</a>
+				<a href="/queue" class="counter" id="counter2" on:click={setCounter2}>Schalter 2</a>
+			</Card>
+		</div>
+		<div>
+			<Card class="card-item">
+				<a href="/queue" class="counter" id="counter3" on:click={setCounter3}>Schalter 3</a>
 			</Card>
 		</div>
 		<div>
@@ -58,10 +69,5 @@
 		font-weight: bold;
 		padding: 10px;
 		text-align: center;
-	}
-	
-	.counter:hover {
-		background-color: #fff;
-		color: #000;
 	}
 </style>

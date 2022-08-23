@@ -10,12 +10,12 @@
 	let server = "10.65.15.141";
 
 
-	let url = `http://127.0.0.1:8000/queue/ticket/?called=False`;
+	let url = `http://${server}:8000/queue/ticket/?called=False`;
 
 	const [data,loading,error,get] =fetchStore(url)
 	setInterval(() => {
 		get()
-	}, 1000);
+	}, 1500);
 
 
 	const ticketAufruf = async (e) => {
@@ -23,7 +23,7 @@
 		data.update((list) => {
 			return (list || []).filter(t => t.id !== $currentTicket.id)
 		});
-		const url = `http://127.0.0.1:8000/queue/ticket/${$currentTicket.id}`;
+		const url = `http://${server}/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
 		$currentTicket.counter = $counter === 'Schalter A' ? 1 : 2
 		const res = await fetch(url, {
