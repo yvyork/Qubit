@@ -18,6 +18,6 @@ class PDF(FPDF):
         for image in images:
             image.save('./ticketpdf/out.png', 'PNG')
 
-        os.popen ("brother_ql print -l 62 ./ticketpdf/out.png")
+        os.popen ("brother_ql -p tcp://192.168.171.217 -m QL-720NW print -l 62 out.png")
 
 
