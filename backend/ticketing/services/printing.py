@@ -16,7 +16,7 @@ class PDF(FPDF):
         images = convert_from_path('./ticketpdf/ticket.pdf', 62)
 
         for image in images:
-            image.save('out.png', 'PNG')
+            image.save('./ticketpdf/out.png', 'PNG')
 
         os.popen ("brother_ql print -l 62 ./ticketpdf/out.png")
 

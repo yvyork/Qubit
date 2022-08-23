@@ -5,5 +5,8 @@ RUN mkdir ticketpdf
 COPY . .
 RUN export BROTHER_QL_PRINTER=tcp://192.168.171.217
 RUN export BROTHER_QL_MODEL=QL-720NW
+RUN apt-get update
+RUN apt-get install nano
+RUN apt-get install poppler-utils
 RUN pip3 install -r requirements.txt
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
