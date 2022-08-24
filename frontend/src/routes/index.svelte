@@ -12,13 +12,13 @@
 		setLocalCounter(counterName);
 	}
 
-	// function setCounter3() {
-	// 	var counterName = document.getElementById("counter3").innerText;
-	// 	setLocalCounter(counterName);
-	// }
+	function setCounter3() {
+		var counterName = document.getElementById("counter3").innerText;
+		setLocalCounter(counterName);
+	}
 
 	function setLocalCounter(counterId) {
-		// localStorage.clear();
+		localStorage.clear();
 		$counter = counterId;
 	}
 </script>
@@ -36,11 +36,11 @@
 				<a href="/queue" class="counter" id="counter2" on:click={setCounter2}>Schalter 2</a>
 			</Card>
 		</div>
-		<!-- <div>
+		<div>
 			<Card class="card-item">
 				<a href="/queue" class="counter" id="counter3" on:click={setCounter3}>Schalter 3</a>
 			</Card>
-		</div> -->
+		</div>
 		<div>
 			<Card class="card-item">
 				<a href="/register" class="counter">Registrierung</a>

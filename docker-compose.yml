@@ -9,6 +9,9 @@ services:
       - type: bind
         source: ./printdata
         target: /django/ticketpdf
+      - type: volume
+        source: ./backend
+        target: /django
     depends_on:
       db:
         condition: service_healthy 
