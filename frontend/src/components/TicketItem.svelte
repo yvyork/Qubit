@@ -6,18 +6,20 @@
     export let showButton = true;
 
     const dispatch = createEventDispatcher()
-    
     const handleCall = (item) => {
-        console.log($counter);
         dispatch('aufrufen', item);      
-    }
+    } 
 
-    let timediff = Math.ceil((Date.now() - Date.parse(item.timestamp)) / 60000);
+    function time_difference() { return Math.ceil((Date.now() - Date.parse(item.timestamp)) / 60000);}
+    let time_counter = 0;
+    setInterval (() => {
+        time_counter = time_difference();
+    }, 2500);
 </script>
 
 <Card>
-    <!-- Red Time Counter -->
-    <div class="time-display" >{timediff}</div>
+    <!-- Red Time Counter --> 
+    <div class="time-display" >{time_counter}</div>
     <!-- Genereal Ticket Info -->
     <div class="flex flex-row justify-around"> 
         <div class="px-4 font-bold text-4xl">{item.number}</div>

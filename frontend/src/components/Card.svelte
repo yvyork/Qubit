@@ -1,26 +1,27 @@
 
-<div class="card">
+<div onclick="" class="card">
     <slot></slot>
 </div>
 
 <style>
 
-  /* Ripple effect */
-  .card {
-  background-position: center;
-  transition: background 0.8s;
-  border-radius: 15px;
-}
+
+.card {cursor: pointer;}
 .card:hover {
   background: #d1e3f2 radial-gradient(circle, transparent 1%, #d1e3f2 1%) center/15000%;
 }
+
+.card {cursor: pointer;}
 .card:active {
-  background-color: #cae0f1;
+  background-color: #7fc0f2;
   background-size: 100%;
   transition: background 0s;
 }
 
-    .card {
+.card {
+  background-position: center;
+  transition: background 0.8s;
+  border-radius: 15px;
   background-color: #fff;
   color: #333;
   border-radius: 15px;

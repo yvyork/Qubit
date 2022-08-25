@@ -32,8 +32,6 @@ export default function (url) {
 	get()
 
 	return [waitinglist, loading, error, get]
-	
-	
 }
 
 

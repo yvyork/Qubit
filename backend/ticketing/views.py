@@ -23,7 +23,7 @@ def ticket_list(request):
         serialzer = TicketSerializer(data=request.data)
         serialzer.is_valid(raise_exception=True)
         serialzer.save()
-        # PDF.printTicket(serialzer.data['number'])
+        PDF.printTicket(serialzer.data['number'])
         return Response(serialzer.data, status=status.HTTP_201_CREATED)
        
 @api_view(['GET', 'PUT'])

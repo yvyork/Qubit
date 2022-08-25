@@ -22,7 +22,7 @@ import TicketForm from "../components/TicketForm.svelte";
 
 <div class="thing">
     <h1 class="text-4xl text-center my-8 uppercase">Registrierung</h1>
-    <h1 class="text-center text-2xl">Registriere ein neues Ticket hier</h1>
+    <!-- <h1 class="text-center text-2xl">Registriere ein neues Ticket hier</h1> -->
 
 </div>
 

@@ -1,12 +1,12 @@
 <script>
     import Card from '../components/Card.svelte';
-    import { counter } from '../stores/counterstore';
 
     export let ticketType;
 
     let server = "10.65.15.141";
     let local = "127.0.0.1";
 
+    let idcounter = 2;
     let url = `http://${server}:8000/queue/ticket/`
 
     async function handleSubmit() {
@@ -15,10 +15,12 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+                id: idcounter,
                 wait: ticketType.wait_time,
             })
         });
         const data = await submit.json();
+        idcounter++;
     }
     
 </script>

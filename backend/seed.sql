@@ -8,5 +8,4 @@ VALUES (1, 'Schalter 1'),
 // The Zero-Ticket is always needed to start the counter
 // Fix in later version
 INSERT INTO ticketing_ticket (id, number, timestamp, wait, called)
-VALUES (1, 100, now(), 5, true),
-(2, 101, now(), 15, false);
+VALUES (1, 100, now(), 5, true);

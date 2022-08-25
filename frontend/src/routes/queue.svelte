@@ -9,26 +9,25 @@
 	let local = "127.0.0.1";
 	let server = "10.65.15.141";
 
-
 	let url = `http://${server}:8000/queue/ticket/?called=False`;
 
-	const [data,loading,error,get] =fetchStore(url)
+	const [data,loading,error,get] = fetchStore(url)
 	setInterval(() => {
 		get()
-	}, 1000);
+	}, 2000);
 
 
 	const ticketAufruf = async (e) => {
-		console.log("I am here");
 		$currentTicket = e.detail;
 		data.update((list) => {
 			return (list || []).filter(t => t.id !== $currentTicket.id)
 		});
-		const url = `http://${server}:8000/queue/ticket/${$currentTicket.id}`;
-
-		$currentTicket.called = true;
+		data.update((list) => {
+			return (list || []).sort((a,b) => Math.round(minutes(a.timestamp, a.type)) - Math.round(minutes(b.timestamp, b.type)));
+		});
 		
-		console.log("ticket calle? :" + $currentTicket.called)
+		const url = `http://${server}:8000/queue/ticket/${$currentTicket.id}`;
+		$currentTicket.called = true;
 
 		if ($counter === 'Schalter 1') {
 			$currentTicket.counter = 1;
@@ -38,14 +37,15 @@
 			$currentTicket.counter = 3;
 		}
 
-		console.log("The curren counter id: " + $currentTicket.counter)
-
-		console.log($currentTicket);
 		const res = await fetch(url, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json'},
 			body: JSON.stringify($currentTicket),  
 		});
+	}
+
+	function minutes(datestring, timetype) {
+    	return timetype - ((datestring - Date.now()) / 60000);
 	}
 </script>
 
@@ -58,8 +58,6 @@
 <hr id="ruler">
 <h1 id="warteliste" class="text-4xl text-center my-8 uppercase"><strong>Warteliste</strong></h1>
 
-
-
 {#if $error}
 	<p>Error: {$error.message}</p>
 {:else}
@@ -67,8 +65,6 @@
 	<TicketList list={data} on:aufrufen={ticketAufruf}/>
 </div>
 {/if}
-
-
 
 <style>
 	#warteliste {
