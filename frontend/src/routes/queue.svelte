@@ -9,9 +9,10 @@
 	let local = "127.0.0.1";
 	let server = "10.65.15.141";
 
-	let url = `http://${server}:8000/queue/ticket/?called=False`;
+	let url = `http://${local}:8000/queue/ticket/?called=False`;
 
 	const [data,loading,error,get] = fetchStore(url)
+	
 	setInterval(() => {
 		get()
 	}, 2000);
@@ -22,7 +23,7 @@
 		data.update((list) => {
 			return (list || []).filter(t => t.id !== $currentTicket.id)
 		});	
-		const url = `http://${server}:8000/queue/ticket/${$currentTicket.id}`;
+		const url = `http://${local}:8000/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
 
 		if ($counter === 'Schalter 1') {
@@ -39,6 +40,16 @@
 			body: JSON.stringify($currentTicket),  
 		});
 	}
+
+	const deleteTicket = async (e) => {
+		const ticket = e.detail;
+		const url = `http://${local}:8000/queue/ticket/${ticket.id}`;
+		const res = await fetch(url, {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json'},
+			body: JSON.stringify(ticket),
+		});
+	} 
 </script>
 
 <svelte:head>
@@ -54,7 +65,7 @@
 	<p>Error: {$error.message}</p>
 {:else}
 <div class="max-w-lg mx-auto"> 
-	<TicketList list={data} on:aufrufen={ticketAufruf}/>
+	<TicketList list={data} on:aufrufen={ticketAufruf} on:delete-ticket={deleteTicket}/>
 </div>
 {/if}
 

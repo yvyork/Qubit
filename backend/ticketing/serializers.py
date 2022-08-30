@@ -14,11 +14,6 @@ class TicketSerializer(serializers.ModelSerializer):
     def create(self, validated_data):  
         ticket = Ticket(**validated_data)
         ticket.ticket_timestamp = timezone.now()
-        stored = Ticket.objects.latest('number')
-        print("lates number: ")
-        print(stored)
         ticket.number = Ticket.objects.latest('number').number + 1
-        print("new number: ")
-        print(ticket.number)
         ticket.save()
         return ticket
