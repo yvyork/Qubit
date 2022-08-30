@@ -11,10 +11,12 @@
     } 
 
     function time_difference() { return Math.ceil((Date.now() - Date.parse(item.timestamp)) / 60000);}
+
     let time_counter = 0;
+    
     setInterval (() => {
         time_counter = time_difference();
-    }, 2500);
+    }, 1500);
 </script>
 
 <Card>

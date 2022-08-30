@@ -21,11 +21,7 @@
 		$currentTicket = e.detail;
 		data.update((list) => {
 			return (list || []).filter(t => t.id !== $currentTicket.id)
-		});
-		data.update((list) => {
-			return (list || []).sort((a,b) => Math.round(minutes(a.timestamp, a.type)) - Math.round(minutes(b.timestamp, b.type)));
-		});
-		
+		});	
 		const url = `http://${server}:8000/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
 
@@ -33,7 +29,7 @@
 			$currentTicket.counter = 1;
 		} else if ($counter === 'Schalter 2') {
 			$currentTicket.counter = 2;
-		} else {
+		} else if ($counter === 'Schalter 3') {
 			$currentTicket.counter = 3;
 		}
 
@@ -42,10 +38,6 @@
 			headers: { 'Content-Type': 'application/json'},
 			body: JSON.stringify($currentTicket),  
 		});
-	}
-
-	function minutes(datestring, timetype) {
-    	return timetype - ((datestring - Date.now()) / 60000);
 	}
 </script>
 

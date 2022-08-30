@@ -22,7 +22,9 @@ export default function (url) {
 		error.set(false)
 		try {
 			const response = await fetch(url)
-			waitinglist.set(await response.json())
+			const data = await response.json();
+			sortDataDirectly(data);
+			waitinglist.set(data);
 		} catch(e) {
 			error.set(e)
 		}
@@ -34,5 +36,17 @@ export default function (url) {
 	return [waitinglist, loading, error, get]
 }
 
+function minutes(type, datestring) {
+    return Math.round(type - (( Date.now() - datestring) / 60_000))
+};
 
-
+function sortDataDirectly(data) {
+    data.sort((a,b) => {
+        let Astring = Date.parse(a.timestamp);
+        let Bstring = Date.parse(b.timestamp);
+        let one = minutes(a.wait, Astring);
+        let two = minutes(b.wait, Bstring); 
+        let res = one - two;
+        return res;
+    });
+}
