@@ -3,13 +3,19 @@
     import {createEventDispatcher} from 'svelte'
     export let item
     export let showButton = true;
+    export let callAgainButton = false; 
 
     const dispatch = createEventDispatcher()
+
     const handleCall = (item) => {
         dispatch('aufrufen', item);      
     } 
     const handleDelete = (item) => {
         dispatch('delete-ticket', item);
+    }
+
+    const callAgain = (item) => {
+        dispatch('call-again', item)
     }
 
     function time_difference() { return Math.ceil((Date.now() - Date.parse(item.timestamp)) / 60000);}
@@ -35,6 +41,9 @@
             (item)}>X</button>
         {#if showButton}
         <button class="call-button" on:click={() => handleCall(item)}>Aufrufen</button>
+        {/if}
+        {#if callAgainButton}
+        <button class="call-button" on:click={() => callAgain(item)}>Aufrufen</button>
         {/if}
         
     </div>       
