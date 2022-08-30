@@ -1,7 +1,6 @@
 <script>
     import Card from './Card.svelte'
     import {createEventDispatcher} from 'svelte'
-    import { counter } from '../stores/counterstore';
     export let item
     export let showButton = true;
 
@@ -9,17 +8,22 @@
     const handleCall = (item) => {
         dispatch('aufrufen', item);      
     } 
+    const handleDelete = (item) => {
+        dispatch('delete-ticket', item);
+    }
 
     function time_difference() { return Math.ceil((Date.now() - Date.parse(item.timestamp)) / 60000);}
 
     let time_counter = 0;
-    
+
     setInterval (() => {
         time_counter = time_difference();
     }, 1500);
 </script>
 
 <Card>
+    <button class="close" on:click={() => handleDelete
+        (item.id)}>X</button>
     <!-- Red Time Counter --> 
     <div class="time-display" >{time_counter}</div>
     <!-- Genereal Ticket Info -->
@@ -27,9 +31,12 @@
         <div class="px-4 font-bold text-4xl">{item.number}</div>
         <!-- <div class="w-3"></div> -->
         <div class="px-4 text-4xl">{item.wait} min</div>
+        <button class="close" on:click={() => handleDelete
+            (item)}>X</button>
         {#if showButton}
         <button class="call-button" on:click={() => handleCall(item)}>Aufrufen</button>
         {/if}
+        
     </div>       
 </Card>
 
@@ -65,6 +72,15 @@
         user-select: none;
         -webkit-user-select: none;
         touch-action: manipulation;    
+    }
+
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        cursor: pointer;
+        background: none;
+        border: none;
     }
 
 
