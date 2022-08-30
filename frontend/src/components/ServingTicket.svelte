@@ -6,9 +6,9 @@
     
     const callAgain = async (e) => {
         const url_pacs = "http://10.65.15.141:3100/api/rank";
-        const url = "http://10.65.15.159:3100/api/rank";
+        // const url = "http://10.65.15.159:3100/api/rank";
         let ticket = e.detail;
-        const res = await fetch(url, {
+        const res = await fetch(url_pacs, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({
