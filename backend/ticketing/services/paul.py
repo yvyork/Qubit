@@ -2,6 +2,7 @@ import requests
 from requests.structures import CaseInsensitiveDict
 
 def callPaul(num, counter):
+    # url_pacs = "http://10.65.15.141:3100/api/rank"
     url = "http://10.65.15.159:3100/api/rank"
     cnt = counter.id
     if (cnt == 1):

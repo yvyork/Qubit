@@ -54,13 +54,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    # add container IP here
-    "http://frontend:3000",
-    "http://127.0.0.1:4173",
     "http://127.0.0.1:3000",
-    "http://localhost:4173",
-    "http://165.22.94.223:3000",
-    "http://165.22.94.223:80",
     "http://10.65.15.141:3000",
     "http://10.65.15.141:80",
 ]

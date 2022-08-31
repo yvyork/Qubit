@@ -1,3 +1,5 @@
+from os import stat
+import re
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -26,7 +28,7 @@ def ticket_list(request):
         PDF.printTicket(serialzer.data['number'])
         return Response(serialzer.data, status=status.HTTP_201_CREATED)
        
-@api_view(['GET', 'PUT'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def ticket_detail(request, id):
     if request.method == 'GET':
         ticket = get_object_or_404(Ticket, pk=id)
@@ -39,3 +41,8 @@ def ticket_detail(request, id):
         serialzer.save()
         callPaul(ticket.number, ticket.counter)
         return Response(serialzer.data)
+    elif request.method == 'DELETE':
+        ticket = get_object_or_404(Ticket, pk=id)
+        ticket.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
