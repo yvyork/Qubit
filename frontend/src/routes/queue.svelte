@@ -43,7 +43,7 @@
 
 	const deleteTicket = async (e) => {
 		const ticket = e.detail;
-		const url = `http://${local}:8000/queue/ticket/${ticket.id}`;
+		const url = `http://${server}:8000/queue/ticket/${ticket.id}`;
 		const res = await fetch(url, {
 			method: 'DELETE',
 			headers: { 'Content-Type': 'application/json'},
