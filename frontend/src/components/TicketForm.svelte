@@ -7,7 +7,7 @@
     let local = "127.0.0.1";
 
     let idcounter = 2;
-    let url = `http://${local}:8000/queue/ticket/`
+    let url = `http://${server}:8000/queue/ticket/`
 
     async function handleSubmit() {
 

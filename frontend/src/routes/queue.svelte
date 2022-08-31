@@ -9,7 +9,7 @@
 	let local = "127.0.0.1";
 	let server = "10.65.15.141";
 
-	let url = `http://${local}:8000/queue/ticket/?called=False`;
+	let url = `http://${server}:8000/queue/ticket/?called=False`;
 
 	const [data,loading,error,get] = fetchStore(url)
 	
@@ -23,7 +23,7 @@
 		data.update((list) => {
 			return (list || []).filter(t => t.id !== $currentTicket.id)
 		});	
-		const url = `http://${local}:8000/queue/ticket/${$currentTicket.id}`;
+		const url = `http://${server}:8000/queue/ticket/${$currentTicket.id}`;
 		$currentTicket.called = true;
 
 		if ($counter === 'Schalter 1') {

@@ -85,26 +85,26 @@ WSGI_APPLICATION = 'qubitbackend.wsgi.application'
 MYSQL for Dev --> Change to PostgreSQL for production
 """
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'db',
-#         'PORT': 5432,
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'qubit',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': 'a_opK-CM9k.o_4zh',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'qubit',
+#         'HOST': 'localhost',
+#         'USER': 'root',
+#         'PASSWORD': 'a_opK-CM9k.o_4zh',
+#     }
+# }
 
 
 # Password validation
